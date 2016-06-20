@@ -1,10 +1,10 @@
-# backbone-relational-jsonapi
+# backbone-relational-sync-jsonapi
 
 A helper than enables syncing Backbone Collections in a format compliant with JSONapi 1.0. Also detects changes to related models and saves them.
 
 ## Installation
 
-    $ npm install backbone-relational-jsonapi
+    $ npm install backbone-relational-sync-jsonapi
 
 ## Documentation
 
@@ -12,13 +12,13 @@ A helper than enables syncing Backbone Collections in a format compliant with JS
 
 First, install the package:
 
-    npm install backbone-sync-jsonapi --save-dev
+    npm install backbone-relational-sync-jsonapi --save-dev
 
 Then require it:
 
     var _ = require('underscore'),
         Backbone = require('backbone');
-    require('backbone-sync-jsonapi')(Backbone, _);
+    require('backbone-relational-sync-jsonapi')(Backbone, _);
     Backbone.Relational = require('backbone-relational');
 
 ###Browser
@@ -27,9 +27,9 @@ First include the script after backbone and underscore.
 
     <script src="underscore.js"></script>
     <script src="backbone.js"></script>
-    <script src="backbone-sync-jsonapi.js"></script>
+    <script src="backbone-relational-sync-jsonapi.js"></script>
     <script type="text/javascript">
-        backboneSyncJsonapi(Backbone, _);
+        backboneRelationalSyncJsonapi(Backbone, _);
     </script>
     <script src="backbone-relational.js"></script>
 
