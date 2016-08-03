@@ -1,12 +1,6 @@
 'use strict';
-import myBackbone from 'backbone';
-import underscore from 'underscore';
 
 export default function(Backbone, _){
-  //make sure we have everything we need.
-  Backbone = Backbone || myBackbone;
-  _ = _ || underscore;
-
   var oldHasChanged = Backbone.Model.prototype.hasChanged;
   /**
    * Override Model.hasChanged to allow checking if any of the model's
@@ -189,6 +183,7 @@ export default function(Backbone, _){
        * we need to sync those
        */
       var syncRelations = options.relations || model.syncRelations;
+      console.log('sync relations');
       if (syncRelations) {
         for (let i = 0; i < syncRelations.length; i++) {
           var rel = model.get(syncRelations[i]);

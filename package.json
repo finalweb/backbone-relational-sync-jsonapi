@@ -1,11 +1,12 @@
 {
   "name": "backbone-relational-sync-jsonapi",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A helper than enables syncing Backbone Collections in a format compliant with JSONapi 1.0. Also detects changes to related models and saves them.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "babel -d dist src/"
+    "build": "babel -d dist src/",
+    "watch": "babel -d dist src/ --watch"
   },
   "keywords": [
     "backbone",
@@ -29,5 +30,6 @@
     "backbone-relational": "git+https://github.com/PaulUithol/Backbone-relational.git#master",
     "jquery": "^3.0.0",
     "underscore": "^1.8.3"
-  }
+  },
+  "main": "dist/backbone-relational-sync-jsonapi.js"
 }

@@ -1,16 +1,16 @@
 (function (global, factory) {
   if (typeof define === "function" && define.amd) {
-    define(['exports', 'backbone', 'underscore'], factory);
+    define(['exports'], factory);
   } else if (typeof exports !== "undefined") {
-    factory(exports, require('backbone'), require('underscore'));
+    factory(exports);
   } else {
     var mod = {
       exports: {}
     };
-    factory(mod.exports, global.backbone, global.underscore);
-    global.backboneSyncJsonapi = mod.exports;
+    factory(mod.exports);
+    global.backboneRelationalSyncJsonapi = mod.exports;
   }
-})(this, function (exports, _backbone, _underscore) {
+})(this, function (exports) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {
@@ -18,10 +18,6 @@
   });
 
   exports.default = function (Backbone, _) {
-    //make sure we have everything we need.
-    Backbone = Backbone || _backbone2.default;
-    _ = _ || _underscore2.default;
-
     var oldHasChanged = Backbone.Model.prototype.hasChanged;
     /**
      * Override Model.hasChanged to allow checking if any of the model's
@@ -204,6 +200,7 @@
          * we need to sync those
          */
         var syncRelations = options.relations || model.syncRelations;
+        console.log('sync relations');
         if (syncRelations) {
           for (var _i = 0; _i < syncRelations.length; _i++) {
             var rel = model.get(syncRelations[_i]);
@@ -270,16 +267,6 @@
 
     return Backbone;
   };
-
-  var _backbone2 = _interopRequireDefault(_backbone);
-
-  var _underscore2 = _interopRequireDefault(_underscore);
-
-  function _interopRequireDefault(obj) {
-    return obj && obj.__esModule ? obj : {
-      default: obj
-    };
-  }
 
   var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
     return typeof obj;
