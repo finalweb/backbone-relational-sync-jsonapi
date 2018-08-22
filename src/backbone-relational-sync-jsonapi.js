@@ -1,5 +1,14 @@
 'use strict';
 
+let getVariableFromWindow = function(path){
+  let array = path.split('.');
+  let value = window;
+  array.forEach((v) => {
+    value = value[v];
+  });
+  return value;
+};
+
 export default function(Backbone, _){
   var oldHasChanged = Backbone.Model.prototype.hasChanged;
   /**
@@ -76,6 +85,9 @@ export default function(Backbone, _){
     var opts = _.extend({
       collection: 'Backbone.Collection'
     }, options);
+
+    let collection = getVariableFromWindow(opts.collection);
+
     var data = {},
       model = this;
 
@@ -94,7 +106,7 @@ export default function(Backbone, _){
         } else {
           if (rel.hasChanged()) {
             if (!data[item]) {
-              data[item] = new (window[opts.collection].extend({
+              data[item] = new (collection.extend({
                 model: rel.constructor
               }));
             }

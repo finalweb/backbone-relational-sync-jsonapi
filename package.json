@@ -1,6 +1,6 @@
 {
   "name": "backbone-relational-sync-jsonapi",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "A helper than enables syncing Backbone Collections in a format compliant with JSONapi 1.0. Also detects changes to related models and saves them.",
   "main": "index.js",
   "scripts": {

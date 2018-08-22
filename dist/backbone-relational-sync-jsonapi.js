@@ -93,6 +93,9 @@
       var opts = _.extend({
         collection: 'Backbone.Collection'
       }, options);
+
+      var collection = getVariableFromWindow(opts.collection);
+
       var data = {},
           model = this;
 
@@ -111,7 +114,7 @@
           } else {
             if (rel.hasChanged()) {
               if (!data[item]) {
-                data[item] = new (window[opts.collection].extend({
+                data[item] = new (collection.extend({
                   model: rel.constructor
                 }))();
               }
@@ -272,6 +275,15 @@
     return typeof obj;
   } : function (obj) {
     return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj;
+  };
+
+  var getVariableFromWindow = function getVariableFromWindow(path) {
+    var array = path.split('.');
+    var value = window;
+    array.forEach(function (v) {
+      value = value[v];
+    });
+    return value;
   };
 
   ;
